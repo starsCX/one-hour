@@ -8,16 +8,8 @@
         Hello, {{ current_user.username }}!
     </h1>
     <h3>Welcome to One Hour.</h3>
-    <p>
-        Before you can access this site you need to confirm your account.
-        Check your inbox, you should have received an email with a confirmation link.
-    </p>
-    <p>
-        Need another confirmation email?
-        <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
-    </p>
     <br>
-    <form action="/newtask" method="POST">
+    <form action="/auth/newtask" method="POST">
         <a href="{{url_for('auth.newtask')}}"><input type="submit" name="new" value="New task"></a>
         <a href="{{url_for('auth.newtask')}}"><input type="submit" name="history" value="History"></a>
     </form>

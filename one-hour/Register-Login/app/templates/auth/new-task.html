@@ -8,14 +8,90 @@
         Hello, {{ current_user.username }}!
     </h1>
     <h3>Welcome to One Hour.</h3>
-    <form action="{{ url_for('newtask') }}" method="POST" >
+    <form>
       <dl>
         <dt>Title:
-        <dd><input type = text size = 30 name = title>
-        <dt>Text:
-        <dd><textarea name = text rows = 5 cols = 40></textarea>
-        <dd><input type = submit value = START>
+        <dd><input type = "text" size = "30" name = "title">
+        <dt>Discription:
+        <dd><textarea name = "text" rows = "5" cols = "40"></textarea>
+        <dd><button class="btn btn-primary" 
+    data-toggle="modal" data-target="#myModal" data-backdrop="static">START</button>
       </dl>
     </form>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        学习Python
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form>  
+                    <div class="input-group">
+                        <div class="input-group-addon">坚持就是胜利</div>
+                    </div>
+                    <div id="timer">
+                        <div class="divc">
+                        <label style="font-weight: bold;">请选择提示铃声：</label>
+                        <select id="v" style="height:30px;border-radius: 4px;">
+                            <option value="1">铃声 一 </option>
+                            <option value="2">铃声 二</option>
+                            <option value="3">铃声 三</option>
+                        </select>
+                        </br>
+                        </br>
+                        
+                        <label style="font-weight:bold;margin-left: -22%;">倒计时：</label></br></br>
+                        
+                        <input id="s" value="1" class="inputc">
+                        <label style="font-weight: bold;">时</label>
+                        </br>
+                        </br>
+                        
+                        <input id="f" value="0" class="inputc">
+                        <label style="font-weight: bold;">分</label>
+                        </br>
+                        </br>
+                        
+                        <input id="m" value="0" class="inputc">
+                        <label style="font-weight: bold;">秒</label>
+                        </br>
+                        </br>
+                        
+                        <button onClick="start()" type="button" class="btn btn-default">开 始</button>
+                        <button onClick="stop()" type="button" class="btn btn-default"style="margin-right: -15%;">停止</button>
+                        
+                        <audio src="static/music/2.mp3" id="music" controls="controls"loop="loop" style="display: none;"></audio>
+                        <label id="note" class="notec">倒计时正在进行！</label>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" 
+                            data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script>
+$(function () { $('#myModal').modal({
+    keyboard: true,
+    show: false,
+})});
+    </script>
 {% endblock %}

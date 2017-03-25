@@ -43,7 +43,7 @@
 		}
 		function cancel(){
 			var audio = document.getElementById('music');
-			document.getElementById('music').src="music/"+document.getElementById("v").value+".mp3";
+			document.getElementById('music').src="static/music/"+document.getElementById("v").value+".mp3";
 			audio.play();
 			document.getElementById("note").innerHTML="倒计时已结束！！";
 			a=1;
