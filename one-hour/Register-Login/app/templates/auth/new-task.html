@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Flasky - Confirm your account{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Hello, {{ current_user.username }}!
+    </h1>
+    <h3>Welcome to One Hour.</h3>
+    <form action="{{ url_for('newtask') }}" method="POST" >
+      <dl>
+        <dt>Title:
+        <dd><input type = text size = 30 name = title>
+        <dt>Text:
+        <dd><textarea name = text rows = 5 cols = 40></textarea>
+        <dd><input type = submit value = START>
+      </dl>
+    </form>
+</div>
+{% endblock %}
