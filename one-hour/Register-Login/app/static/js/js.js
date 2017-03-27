@@ -43,7 +43,7 @@
 		}
 		function cancel(){
 			var audio = document.getElementById('music');
-			document.getElementById('music').src="static/music/"+document.getElementById("v").value+".mp3";
+			document.getElementById('music').src="../static/music/"+document.getElementById("v").value+".mp3";
 			audio.play();
 			document.getElementById("note").innerHTML="倒计时已结束！！";
 			a=1;
@@ -58,6 +58,9 @@
 				document.getElementById("note").style.visibility="hidden";
 				a=2;
 				k=1;//先ks赋值1在k开始循环
+		}
+		function restart(){
+			
 		}
 		function action(){
 			setTimeout("ac()",1000);
