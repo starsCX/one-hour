@@ -7,6 +7,7 @@ from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 
+history_list = []
 
 @auth.before_app_request
 def before_request():
@@ -87,4 +88,20 @@ def newtask():
     if request.method == 'POST':
         if 'new' in request.form.keys():
             return render_template('auth/new-task.html')
+        elif 'history' in request.form.keys():
+            return render_template('auth/unconfirmed.html',history_list = history_list)
+
+    return render_template('auth/new-task.html')
+
+@auth.route('/taskcotent',methods=['GET','POST'])
+def taskcotent():
+    if request.method == 'POST':
+        if 'start' in request.form.keys():
+            header = request.form['title']
+            content = request.form['text']
+            taskcotent = header + ":" + content
+            history_list.append(taskcotent)
+            return render_template('auth/new-task.html',header = header,content = content,message = "新建任务信息已保存，点击计时开启一小时倒计时吧！")
+        elif 'finished' in request.form.keys():
+            return render_template('auth/unconfirmed.html') 
     return render_template('auth/new-task.html')

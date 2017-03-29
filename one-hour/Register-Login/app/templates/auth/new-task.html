@@ -8,14 +8,16 @@
         Hello, {{ current_user.username }}!
     </h1>
     <h3>Welcome to One Hour.</h3>
-    <form>
+    <form action="/auth/taskcotent" method="POST">
       <dl>
         <dt>Title:
         <dd><input type = "text" size = "30" name = "title">
         <dt>Discription:
         <dd><textarea name = "text" rows = "5" cols = "40"></textarea>
-        <dd><button class="btn btn-primary" 
-    data-toggle="modal" data-target="#myModal" data-backdrop="static">START</button>
+        <dd><a href="{{url_for('auth.taskcotent')}}"><input type="submit" name="start" value="确定"></a>
+            <button class="btn btn-primary" 
+    data-toggle="modal" data-target="#myModal" data-backdrop="static">计时</button>
+            <h6 style="color:red">{{message}}</h6>
       </dl>
     </form>
 
@@ -28,13 +30,13 @@
                             aria-hidden="true">×
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        学习Python
+                        {{header}}
                     </h4>
                 </div>
                 <div class="modal-body">
                     <form>  
                     <div class="input-group">
-                        <div class="input-group-addon">坚持就是胜利</div>
+                        <div class="input-group-addon">{{content}}</div>
                     </div>
                     <div id="timer">
                         <div class="divc">
@@ -65,8 +67,8 @@
                         </br>
                         
                         <button onClick="start()" type="button" class="btn btn-default">开 始</button>
-                        <button onClick="stop()" type="button" class="btn btn-default"style="margin-right: -15%;">停止</button>
-                        <button onClick="restart()" type="button" class="btn btn-default"style="margin-right: -15%;">重置</button>
+                        <button onClick="stop()" type="button" class="btn btn-default">停止</button>
+                        <button onClick="restart()" type="button" class="btn btn-default">重置</button>
                         
                         <audio src="../static/music/2.mp3" id="music" controls="controls"loop="loop" style="display: none;"></audio>
                         <label id="note" class="notec">倒计时正在进行！</label>
@@ -75,6 +77,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
+                    <a href="{{url_for('auth.taskcotent')}}"><input type="submit" name="finished" value="完成"></a>
                     <button type="button" class="btn btn-primary" 
                             data-dismiss="modal">关闭
                     </button>

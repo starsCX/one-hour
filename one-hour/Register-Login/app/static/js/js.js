@@ -60,7 +60,9 @@
 				k=1;//先ks赋值1在k开始循环
 		}
 		function restart(){
-			
+			s=document.getElementById("s").value;
+			f=document.getElementById("f").value;
+			m=document.getElementById("m").value;	
 		}
 		function action(){
 			setTimeout("ac()",1000);
