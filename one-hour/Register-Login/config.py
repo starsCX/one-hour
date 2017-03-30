@@ -9,8 +9,8 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = 'rcd1988715@gmail.com' ##
-    MAIL_PASSWORD = 'apple1203' ##改成自己的密碼
+    MAIL_USERNAME = 'example@gmail.com' ##
+    MAIL_PASSWORD = 'xxxxxxxx' ##改成自己的密碼
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
